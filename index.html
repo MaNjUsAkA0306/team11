@@ -944,9 +944,6 @@ img {
         <strong>
          需求摘要
         </strong>
-        <small>
-         可能沒有需求吧
-        </small>
        </div>
       </div>
       <button class="primary" id="quoteBtn" type="button">
@@ -1139,7 +1136,7 @@ document.getElementById('flipBtn').addEventListener('click',()=> {
 }
 );
 document.getElementById('quoteBtn').addEventListener('click',()=> {
-    const message=`客製需求：${size.value}；數量：${qty.value} 個；外觀：${finish.value}。這是網站原型的需求摘要。`;if(navigator.clipboard&&navigator.clipboard.writeText) {
+    const message=`客製需求：${size.value}；數量：${qty.value} 個；外觀：${finish.value}。這是禮盒的需求摘要。`;if(navigator.clipboard&&navigator.clipboard.writeText) {
         navigator.clipboard.writeText(message).then(()=>showToast('需求摘要已複製，可以貼到你的企劃或詢價訊息中。')).catch(()=>showToast(message))
     }
     else showToast(message)
