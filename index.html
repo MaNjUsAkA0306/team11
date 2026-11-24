@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   這人太懶沒取名字
+  </title>
+  <style>
+   :root {
+    --ink:#26352d;
+    --green:#536b52;
+    --sage:#dce5d8;
+    --cream:#f7f5ee;
+    --paper:#eee8dc;
+    --orange:#d98255;
+    --muted:#777d73;
+    --line:#dedfd5;
+    --white:#fff
+}
+* {
+    box-sizing:border-box
+}
+html {
+    scroll-behavior:smooth
+}
+body {
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:Arial,"Noto Sans TC",sans-serif
+}
+a {
+    color:inherit;
+    text-decoration:none
+}
+button,input,select {
+    font:inherit
+}
+.topline {
+    background:var(--ink);
+    color:#fff;
+    text-align:center;
+    padding:9px 16px;
+    font-size:12px;
+    letter-spacing:.08em
+}
+.nav {
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    background:rgba(247,245,238,.96);
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:10
+}
+.brand {
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:.12em
+}
+.brand small {
+    display:block;
+    font-size:9px;
+    letter-spacing:.24em;
+    color:var(--muted);
+    font-weight:500;
+    margin-top:3px
+}
+.navlinks {
+    display:flex;
+    gap:32px;
+    font-size:13px;
+    color:#59645b
+}
+.navlinks a:hover {
+    color:var(--orange)
+}
+.navbtn,.primary {
+    background:var(--green);
+    color:white;
+    border:0;
+    padding:13px 22px;
+    border-radius:3px;
+    cursor:pointer;
+    transition:.2s
+}
+.navbtn:hover,.primary:hover {
+    background:var(--ink);
+    transform:translateY(-2px)
+}
+.hero {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:590px;
+    padding:65px 9% 70px;
+    align-items:center;
+    gap:4%
+}
+.eyebrow {
+    font-size:11px;
+    letter-spacing:.2em;
+    color:var(--orange);
+    font-weight:700
+}
+.hero h1 {
+    font-family:Georgia,"Noto Serif TC",serif;
+    font-size:clamp(38px,5vw,64px);
+    line-height:1.2;
+    letter-spacing:.04em;
+    margin:20px 0
+}
+.hero h1 span {
+    color:var(--green)
+}
+.hero p {
+    line-height:2;
+    color:#687168;
+    font-size:15px;
+    max-width:470px
+}
+.hero-actions {
+    display:flex;
+    gap:13px;
+    margin-top:30px;
+    align-items:center
+}
+.secondary {
+    border:1px solid var(--green);
+    padding:12px 20px;
+    border-radius:3px;
+    font-size:13px
+}
+.hero-note {
+    font-size:11px;
+    color:var(--muted);
+    margin-top:20px
+}
+.hero-art {
+    height:420px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#000;
+    overflow:hidden;
+}
+.section {
+    padding:85px 9%
+}
+.section-head {
+    text-align:center;
+    max-width:620px;
+    margin:0 auto 45px
+}
+.section-head h2 {
+    font-family:Georgia,"Noto Serif TC",serif;
+    font-size:35px;
+    margin:12px 0
+}
+.section-head p {
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.9
+}
+.features {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px
+}
+.feature {
+    background:#fff;
+    padding:30px 28px;
+    border:1px solid var(--line);
+    min-height:190px
+}
+.feature .num {
+    font-family:Georgia,serif;
+    font-size:30px;
+    color:var(--orange)
+}
+.feature h3 {
+    font-size:17px;
+    margin:16px 0 9px
+}
+.feature p {
+    font-size:13px;
+    line-height:1.8;
+    color:var(--muted);
+    margin:0
+}
+.products {
+    background:#e9ede5
+}
+.product-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px
+}
+.product {
+    background:var(--cream);
+    padding:15px 15px 24px
+}
+.product-visual {
+    height:220px;
+    background:#f0e7d8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden
+}
+.mini-box {
+    width:145px;
+    height:110px;
+    background:#cda779;
+    position:relative;
+    box-shadow:12px 14px 0 #b18d64;
+    transform:rotate(-7deg)
+}
+.mini-box:before {
+    content:"";
+    position:absolute;
+    left:0;
+    top:-35px;
+    border-left:72px solid transparent;
+    border-right:72px solid transparent;
+    border-bottom:35px solid #dfc49d
+}
+.mini-box:after {
+    content:"盒作所";
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    color:#fff8e9;
+    font-family:serif;
+    letter-spacing:.15em
+}
+.product:nth-child(2) .product-visual {
+    background:#e4e9df
+}
+.product:nth-child(2) .mini-box {
+    background:#71836a;
+    box-shadow:12px 14px 0 #56684f
+}
+.product:nth-child(2) .mini-box:before {
+    border-bottom-color:#94a58b
+}
+.product:nth-child(3) .product-visual {
+    background:#f1e4d8
+}
+.product:nth-child(3) .mini-box {
+    background:#d58e68;
+    box-shadow:12px 14px 0 #b97655
+}
+.product:nth-child(3) .mini-box:before {
+    border-bottom-color:#e7b292
+}
+.product h3 {
+    font-size:17px;
+    margin:20px 5px 7px
+}
+.product p {
+    font-size:12px;
+    color:var(--muted);
+    line-height:1.8;
+    margin:0 5px 18px
+}
+.product a {
+    font-size:12px;
+    color:var(--green);
+    font-weight:700;
+    margin-left:5px
+}
+.customizer {
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap:55px;
+    align-items:start
+}
+.custom-copy h2 {
+    font-family:Georgia,"Noto Serif TC",serif;
+    font-size:36px;
+    line-height:1.3;
+    margin:12px 0
+}
+.custom-copy p {
+    font-size:14px;
+    line-height:1.9;
+    color:var(--muted)
+}
+.steps {
+    margin-top:30px;
+    display:grid;
+    gap:16px
+}
+.step {
+    display:flex;
+    gap:13px;
+    align-items:flex-start;
+    font-size:13px;
+    line-height:1.7
+}
+.step b {
+    width:27px;
+    height:27px;
+    display:grid;
+    place-items:center;
+    background:var(--sage);
+    border-radius:50%;
+    flex:none;
+    color:var(--green)
+}
+.config {
+    background:#fff;
+    border:1px solid var(--line);
+    padding:28px
+}
+.config h3 {
+    margin:0 0 23px;
+    font-size:18px
+}
+.field {
+    margin-bottom:19px
+}
+.field label {
+    display:block;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:8px
+}
+.field select,.field input {
+    width:100%;
+    padding:12px;
+    border:1px solid var(--line);
+    background:#fbfaf6;
+    color:var(--ink);
+    border-radius:2px
+}
+.swatches {
+    display:flex;
+    gap:10px
+}
+.swatch {
+    width:30px;
+    height:30px;
+    border:2px solid white;
+    outline:1px solid var(--line);
+    border-radius:50%;
+    cursor:pointer
+}
+.swatch.active {
+    outline:2px solid var(--green)
+}
+.preview {
+    margin:15px 0 20px;
+    background:#e9ede5;
+    height:175px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden
+}
+.preview-box {
+    width:165px;
+    height:100px;
+    background:#cda779;
+    display:grid;
+    place-items:center;
+    color:white;
+    font-family:Georgia,serif;
+    letter-spacing:.1em;
+    transform:rotate(-5deg);
+    transition:.25s
+}
+.preview-logo {
+    max-width: 75%;
+    max-height: 65px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+.upload-hint {
+    display: block;
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.6;
+}
+.preview-logo[hidden] {
+    display: none;
+}
+.preview-box.flipped {
+    transform:rotate(5deg) scale(.94);
+    border-radius:3px;
+    background:#71836a;
+}
+.preview-hint {
+    position:absolute;
+    bottom:10px;
+    font-size:10px;
+    color:#64715f;
+    letter-spacing:.1em
+}
+.toggleline {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:12px;
+    margin:12px 0 20px
+}
+.toggleline button {
+    border:1px solid var(--green);
+    background:white;
+    color:var(--green);
+    padding:7px 12px;
+    border-radius:20px;
+    cursor:pointer
+}
+.estimate {
+    border-top:1px solid var(--line);
+    padding-top:17px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:12px
+}
+.estimate strong {
+    font-size:18px;
+    color:var(--green)
+}
+.estimate small {
+    display:block;
+    color:var(--muted);
+    font-size:10px;
+    margin-top:3px
+}
+.config .primary {
+    width:100%;
+    margin-top:18px
+}
+.how {
+    background:var(--ink);
+    color:white
+}
+.how .section-head p {
+    color:#c3cbc1
+}
+.how .eyebrow {
+    color:#e3a27c
+}
+.how-grid {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px
+}
+.how-item {
+    border-top:1px solid #657267;
+    padding-top:20px
+}
+.how-item span {
+    font-family:Georgia,serif;
+    color:#e3a27c;
+    font-size:28px
+}
+.how-item h3 {
+    font-size:15px;
+    margin:15px 0 8px
+}
+.how-item p {
+    font-size:12px;
+    line-height:1.8;
+    color:#c3cbc1
+}
+.faq {
+    max-width:800px;
+    margin:auto
+}
+.faq details {
+    border-bottom:1px solid var(--line);
+    padding:20px 0
+}
+.faq summary {
+    cursor:pointer;
+    font-size:14px;
+    font-weight:700
+}
+.faq p {
+    font-size:13px;
+    line-height:1.8;
+    color:var(--muted)
+}
+.cta {
+    margin:70px 9%;
+    background:var(--sage);
+    padding:55px 30px;
+    text-align:center
+}
+.cta h2 {
+    font-family:Georgia,"Noto Serif TC",serif;
+    font-size:32px;
+    margin:0 0 12px
+}
+.cta p {
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:25px
+}
+.footer {
+    background:#202d26;
+    color:#dfe5dc;
+    padding:45px 9%;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    font-size:12px
+}
+.footer p {
+    color:#aeb9ad;
+    line-height:1.8
+}
+.footer-links {
+    display:flex;
+    gap:22px;
+    align-items:center;
+    color:#c5cec2
+}
+.toast {
+    position:fixed;
+    bottom:22px;
+    left:50%;
+    transform:translate(-50%,20px);
+    background:var(--ink);
+    color:#fff;
+    padding:13px 20px;
+    font-size:13px;
+    border-radius:3px;
+    opacity:0;
+    pointer-events:none;
+    transition:.25s;
+    z-index:20
+}
+.toast.show {
+    opacity:1;
+    transform:translate(-50%,0)
+}
+@media(max-width:800px) {
+    .nav {
+        padding:0 5%;
+        height:66px
+    }
+    .navlinks {
+        display:none
+    }
+    .hero {
+        grid-template-columns:1fr;
+        padding:50px 7%;
+        gap:35px
+    }
+    .hero-art {
+        height:340px
+    }
+    .section {
+        padding:65px 7%
+    }
+    .features,.product-grid {
+        grid-template-columns:1fr
+    }
+    .customizer {
+        grid-template-columns:1fr;
+        gap:30px
+    }
+    .how-grid {
+        grid-template-columns:1fr 1fr
+    }
+    .footer {
+        flex-direction:column
+    }
+    .cta {
+        margin:50px 7%
+    }
+}
+@media(max-width:460px) {
+    .hero h1 {
+        font-size:42px
+    }
+    .hero-actions {
+        flex-wrap:wrap
+    }
+    .how-grid {
+        grid-template-columns:1fr
+    }
+    .config {
+        padding:20px
+    }
+    .section-head h2 {
+        font-size:29px
+    }
+}
+img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+  </style>
+ </head>
+ <body>
+  <div class="topline">
+   給小型點心作坊的包裝提案｜讓每一次寄送，都成為一份禮物
+  </div>
+  <header class="nav">
+  <!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱-->
+   <a class="brand" href="#home">
+    不知道叫啥就先這樣
+    <small>
+     BOX TO GIFT &middot; PACKAGING STUDIO
+    </small>
+   </a>
+   <nav class="navlinks">
+    <a href="#concept">
+     設計理念
+    </a>
+    <a href="#products">
+     包裝款式
+    </a>
+    <a href="#custom">
+     客製流程
+    </a>
+    <a href="#faq">
+     常見問題
+    </a>
+   </nav>
+   <a class="navbtn" href="#custom">
+    開始客製
+   </a>
+  </header>
+  <main>
+   <section class="hero" id="home">
+    <div>
+     <div class="eyebrow">
+      ONE BOX, TWO PURPOSES
+     </div>
+     <h1>
+      大標題，我有
+      <br/>
+      <span>
+       很酷的兩個顏色
+      </span>
+     </h1>
+     <p>
+      小標題，這裡就是打一堆廢話小柑甚麼時候開播小柑甚麼時候開播小柑甚麼時候開播小柑甚麼時候開播小柑甚麼時候開播小柑甚麼時候開播小柑甚麼時候開播小柑甚麼時候開播小柑甚麼時候開播
+     </p>
+     <div class="hero-actions">
+      <a class="primary" href="#custom">
+       打造我的包裝　&rarr;
+      </a>
+      <a class="secondary" href="#concept">
+       了解一箱兩用
+      </a>
+     </div>
+     <div class="hero-note">
+      共用包裝結構・品牌外觀客製・收件後轉換用途
+     </div>
+    </div>
+    <!--底下是主視覺--><!--底下是主視覺--><!--底下是主視覺--><!--底下是主視覺--><!--底下是主視覺--><!--底下是主視覺-->
+    <div class="hero-art">
+    </div>
+    <!--上方是主視覺--><!--上方是主視覺--><!--上方是主視覺--><!--上方是主視覺--><!--上方是主視覺--><!--上方是主視覺-->
+   </section>
+   <section class="section" id="concept">
+    <div class="section-head">
+     <div class="eyebrow">
+      WHY BOX TO GIFT
+     </div>
+     <h2>
+      不只是包裝，而是多一種使用方式
+     </h2>
+     <p>
+      小型作坊不一定需要大量、複雜的包裝選項。從共用結構出發，再透過外觀客製，讓一只箱子同時滿足運送與送禮。
+     </p>
+    </div>
+    <div class="features">
+     <article class="feature">
+      <div class="num">
+       01
+      </div>
+      <h3>
+       減少重複包裝
+      </h3>
+      <p>
+       物流箱與商品禮盒整合，降低分別採購、儲存與包裝的負擔。
+      </p>
+     </article>
+     <article class="feature">
+      <div class="num">
+       02
+      </div>
+      <h3>
+       保留品牌特色
+      </h3>
+      <p>
+       在共用結構上搭配貼紙、紙套或外部印刷，呈現每間店自己的風格。
+      </p>
+     </article>
+     <article class="feature">
+      <div class="num">
+       03
+      </div>
+      <h3>
+       收貨後再次轉換
+      </h3>
+      <p>
+       透過翻轉、摺疊或重新組裝，讓原本的運送外箱變成適合送禮的包裝。
+      </p>
+     </article>
+    </div>
+   </section>
+   <section class="section products" id="products">
+    <div class="section-head">
+     <div class="eyebrow">
+      PACKAGING OPTIONS
+     </div>
+     <h2>
+      選擇適合你的包裝風格
+     </h2>
+     <p>
+      先選擇共用的包裝結構，再依照品牌需求調整外觀。以下為概念款式示意。
+     </p>
+    </div>
+    <div class="product-grid">
+     <article class="product">
+      <div class="product-visual">
+      <!--圖一--><!--圖一--><!--圖一--><!--圖一--><!--圖一-->
+       <img src="Mateirals/wow.jpg">
+      </div>
+      <h3>
+       第一款
+      </h3>
+      <p>
+       我不知道要寫甚麼內容
+      </p>
+      <a href="#custom">
+       選擇此風格　&rarr;
+      </a>
+     </article>
+     <article class="product">
+      <div class="product-visual">
+      <!--圖二--><!--圖二--><!--圖二--><!--圖二--><!--圖二-->
+       <img src="Mateirals/mom.jpg">
+      </div>
+      <h3>
+       第二款
+      </h3>
+      <p>
+	   我不知道要寫甚麼內容
+      </p>
+      <a href="#custom">
+       選擇此風格　&rarr;
+      </a>
+     </article>
+     <article class="product">
+      <div class="product-visual">
+      <!--圖三--><!--圖三--><!--圖三--><!--圖三--><!--圖三-->
+       <img src="Mateirals/wow.jpg">
+      </div>
+      <h3>
+       第三款
+      </h3>
+      <p>
+       我不知道要寫甚麼內容
+      </p>
+      <a href="#custom">
+       選擇此風格　&rarr;
+      </a>
+     </article>
+    </div>
+   </section>
+   <section class="section" id="custom">
+    <div class="customizer">
+     <div class="custom-copy">
+      <div class="eyebrow">
+       MAKE IT YOURS
+      </div>
+      <h2>
+       從一只共用紙箱，
+       <br/>
+       開始你的品牌設計。
+      </h2>
+      <p>
+       選擇包裝尺寸、數量與外觀方式，先預覽品牌呈現。這是網站概念展示，報價與下單功能可在後續版本串接。
+      </p>
+      <div class="steps">
+       <div class="step">
+        <b>
+         1
+        </b>
+        <div>
+         <strong>
+          選擇包裝規格
+         </strong>
+         <br/>
+         依照點心尺寸與出貨需求挑選。
+        </div>
+       </div>
+       <div class="step">
+        <b>
+         2
+        </b>
+        <div>
+         <strong>
+          設定品牌外觀
+         </strong>
+         <br/>
+         選擇紙套、貼紙或外箱印刷。
+        </div>
+       </div>
+       <div class="step">
+        <b>
+         3
+        </b>
+        <div>
+         <strong>
+          確認轉換效果
+         </strong>
+         <br/>
+         預覽寄送狀態與送禮狀態。
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="config">
+      <h3>
+       包裝客製小工具
+      </h3>
+      <div class="field">
+       <label for="size">
+        包裝尺寸
+       </label>
+       <select id="size">
+        <option value="小型｜適合餅乾、鳳梨酥">
+         小型｜適合餅乾、鳳梨酥
+        </option>
+        <option value="中型｜適合綜合點心盒">
+         中型｜適合綜合點心盒
+        </option>
+        <option value="大型｜適合多入禮盒">
+         大型｜適合多入禮盒
+        </option>
+       </select>
+      </div>
+      <div class="field">
+       <label for="qty">
+        預計訂購數量
+       </label>
+       <input
+    	type="number"
+    	id="quantity"
+    	placeholder="請輸入訂購數量"
+   		min="1"
+        >
+      </div>
+      <div class="field">
+       <label>
+        包裝主色
+       </label>
+       <div class="swatches">
+        <button aria-label="牛皮紙色" class="swatch active" data-color="#cda779" style="background:#cda779">
+        </button>
+        <button aria-label="森林綠" class="swatch" data-color="#71836a" style="background:#71836a">
+        </button>
+        <button aria-label="暖橘色" class="swatch" data-color="#d58e68" style="background:#d58e68">
+        </button>
+        <button aria-label="米白色" class="swatch" data-color="#d9c9ae" style="background:#d9c9ae">
+        </button>
+       </div>
+      </div>
+      <!-- 品牌圖片上傳 -->
+	   <div class="field">
+    	<label for="logoUpload">上傳品牌圖片</label>
+        <input
+        	type="file"
+        	id="logoUpload"
+        	accept="image/*"
+        >
+
+       <small class="upload-hint">
+        	可上傳 JPG、PNG 等圖片，圖片將自動顯示於包裝預覽。
+       </small>
+	   </div>
+      <div class="field">
+       <label for="finish">
+        說不定可以再加一個
+       </label>
+       <select id="finish">
+        <option>
+         第一項
+        </option>
+        <option>
+         第二項
+        </option>
+        <option>
+         第三項
+        </option>
+       </select>
+      </div>
+      <div class="preview">
+       <div class="preview-box" id="previewBox">
+
+    	<span id="previewBrandText">你的品牌</span>
+
+    	<img
+        	id="uploadedLogo"
+       		class="preview-logo"
+        	alt="品牌圖片預覽"
+        	hidden
+    	>
+
+		</div>
+       <div class="preview-hint" id="previewHint">
+        物流寄送狀態預覽
+       </div>
+      </div>
+      <div class="toggleline">
+       <span>
+        切換查看送禮狀態
+       </span>
+       <button id="flipBtn" type="button">
+        翻轉包裝 &orarr;
+       </button>
+      </div>
+      <div class="estimate">
+       <div>
+        目前選擇
+        <small id="selectionText">
+         小型・100 個・品牌貼紙
+        </small>
+       </div>
+       <div>
+        <strong>
+         需求摘要
+        </strong>
+        <small>
+         可能沒有需求吧
+        </small>
+       </div>
+      </div>
+      <button class="primary" id="quoteBtn" type="button">
+       整理我的客製需求　&rarr;
+      </button>
+     </div>
+    </div>
+   </section>
+   <section class="section how">
+    <div class="section-head">
+     <div class="eyebrow">
+      HOW IT WORKS
+     </div>
+     <h2>
+      從作坊出貨，到收件者送禮
+     </h2>
+     <p>
+      一套包裝，串起店家出貨與消費者再次使用的體驗。
+     </p>
+    </div>
+    <div class="how-grid">
+     <div class="how-item">
+      <span>
+       01
+      </span>
+      <h3>
+       店家挑選規格
+      </h3>
+      <p>
+       依照商品大小與數量，選擇合適的共用箱型。
+      </p>
+     </div>
+     <div class="how-item">
+      <span>
+       02
+      </span>
+      <h3>
+       加入品牌識別
+      </h3>
+      <p>
+       使用貼紙、紙套或印刷，建立專屬的品牌外觀。
+      </p>
+     </div>
+     <div class="how-item">
+      <span>
+       03
+      </span>
+      <h3>
+       包裝寄送商品
+      </h3>
+      <p>
+       以物流箱形式保護商品，完成日常出貨流程。
+      </p>
+     </div>
+     <div class="how-item">
+      <span>
+       04
+      </span>
+      <h3>
+       翻轉成為禮盒
+      </h3>
+      <p>
+       收件者依照包裝提示翻轉或組裝，轉換成送禮形式。
+      </p>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="faq">
+    <div class="section-head">
+     <div class="eyebrow">
+      GOOD TO KNOW
+     </div>
+     <h2>
+      常見問題
+     </h2>
+     <p>
+      先了解包裝概念，再開始規劃你的客製需求。
+     </p>
+    </div>
+    <div class="faq">
+     <details>
+      <summary>
+       這個包裝真的可以同時當物流箱與禮盒嗎？
+      </summary>
+      <p>
+       本網站呈現的是一箱兩用的設計概念，實際結構仍需依商品重量、尺寸、運送測試與紙材強度進行打樣驗證。
+      </p>
+     </details>
+     <details>
+      <summary>
+       小型作坊也能客製品牌外觀嗎？
+      </summary>
+      <p>
+       概念上以共用箱型搭配貼紙、紙套等方式降低客製門檻；實際最低訂購量與製作費用需依供應商規格確認。
+      </p>
+     </details>
+     <details>
+      <summary>
+       目前可以直接下單嗎？
+      </summary>
+      <p>
+       目前為網站原型展示，尚未串接付款、正式報價或訂單系統。你可以先使用客製工具整理需求。
+      </p>
+     </details>
+    </div>
+   </section>
+   <div class="cta">
+    <h2>
+     讓包裝多一種可能。
+    </h2>
+    <p>
+     從一只箱子開始，讓品牌、寄送與送禮自然連在一起。
+    </p>
+    <a class="primary" href="#custom">
+     開始規劃包裝　&rarr;
+    </a>
+   </div>
+  </main>
+  <footer class="footer">
+   <div>
+   <!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱-->
+    <div class="brand">
+     所以我們要叫甚麼
+    </div>
+    <p>
+     BOX TO GIFT &middot; PACKAGING STUDIO
+     <br/>
+     為小型點心作坊思考更靈活的包裝方式。
+    </p>
+   </div>
+   <div class="footer-links">
+    <a href="#concept">
+     設計理念
+    </a>
+    <a href="#products">
+     包裝款式
+    </a>
+    <a href="#custom">
+     客製工具
+    </a>
+    <a href="#faq">
+     常見問題
+    </a>
+   </div>
+  </footer>
+  <div class="toast" id="toast" role="status">
+  </div>
+  <script>
+   const size=document.getElementById('size');
+   qty=document.getElementById('quantity');
+   finish=document.getElementById('finish');
+   preview=document.getElementById('previewBox');
+   selection=document.getElementById('selectionText');
+   toast=document.getElementById('toast');
+   const logoInput = document.getElementById('logoUpload');
+   const uploadedLogo = document.getElementById('uploadedLogo');
+   const previewBrandText = document.getElementById('previewBrandText');
+   let flipped = false;
+   logoInput.addEventListener('change', function () {
+
+    const file = this.files[0];
+
+    // 沒有選擇圖片就結束
+    if (!file) return;
+
+    // 確認是否為圖片檔案
+    if (!file.type.startsWith('image/')) {
+        showToast('請選擇圖片檔案');
+        this.value = '';
+        return;
+    }
+	const imageURL = URL.createObjectURL(file);
+	uploadedLogo.src = imageURL;
+    uploadedLogo.hidden = false;
+	previewBrandText.hidden = true;
+
+	});
+function update() {
+    selection.textContent=size.value.split('｜')[0]+'・'+qty.value+' 個・'+finish.value
+}
+size.addEventListener('change',update);
+qty.addEventListener('change',update);
+finish.addEventListener('change',update);
+document.querySelectorAll('.swatch').forEach(btn=>btn.addEventListener('click',()=> {
+    document.querySelectorAll('.swatch').forEach(x=>x.classList.remove('active'));btn.classList.add('active');preview.style.background=btn.dataset.color;preview.style.boxShadow='12px 13px 0 '+btn.dataset.color;preview.style.filter='saturate(.85)'
+}
+));
+document.getElementById('flipBtn').addEventListener('click',()=> {
+    flipped=!flipped;preview.classList.toggle('flipped',flipped);document.getElementById('previewHint').textContent=flipped?'送禮組裝狀態預覽':'物流寄送狀態預覽';document.getElementById('flipBtn').textContent=flipped?'切回物流狀態 ↻':'翻轉包裝 ↻'
+}
+);
+document.getElementById('quoteBtn').addEventListener('click',()=> {
+    const message=`客製需求：${size.value}；數量：${qty.value} 個；外觀：${finish.value}。這是網站原型的需求摘要。`;if(navigator.clipboard&&navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(message).then(()=>showToast('需求摘要已複製，可以貼到你的企劃或詢價訊息中。')).catch(()=>showToast(message))
+    }
+    else showToast(message)
+}
+);
+function showToast(msg) {
+    toast.textContent=msg;
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'),3200)
+}
+update();
+  </script>
+ </body>
+</html>
