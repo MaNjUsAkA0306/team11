@@ -607,6 +607,364 @@ img {
     height: 200px;
     object-fit: cover;
 }
+/* =========================
+   預覽按鈕
+========================= */
+
+.preview-launch {
+    margin: 22px 0;
+}
+
+.preview-launch button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.preview-launch p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+    margin-top: 9px;
+}
+
+
+/* =========================
+   3D 預覽頁面
+========================= */
+
+.preview-page {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: var(--cream);
+    overflow-y: auto;
+}
+
+.preview-page.open {
+    display: block;
+}
+
+.preview-header {
+    height: 72px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    border-bottom: 1px solid var(--line);
+}
+
+.preview-header button {
+    border: 1px solid var(--line);
+    background: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: var(--ink);
+}
+
+.preview-title {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 3px;
+}
+
+.preview-title strong {
+    letter-spacing: .12em;
+}
+
+.preview-title span {
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: .15em;
+}
+
+.preview-status {
+    color: var(--green);
+    font-size: 12px;
+}
+
+
+/* =========================
+   左右版面
+========================= */
+
+.preview-layout {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    min-height: calc(100vh - 72px);
+}
+
+.preview-stage {
+    min-height: 650px;
+    background: #e9ede5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.stage-label {
+    position: absolute;
+    top: 30px;
+    left: 35px;
+    color: #718071;
+    font-size: 10px;
+    letter-spacing: .2em;
+}
+
+.drag-hint {
+    color: #718071;
+    font-size: 12px;
+    margin-top: 65px;
+}
+
+
+/* =========================
+   3D 紙箱模型
+========================= */
+
+.scene {
+    width: 300px;
+    height: 250px;
+    perspective: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: none;
+    cursor: grab;
+}
+
+.scene:active {
+    cursor: grabbing;
+}
+/* 避免旋轉時選取文字或圖片 */
+.scene,
+.scene * {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.scene img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
+.box-3d {
+    --box-color: #cda779;
+    --box-light: #dfc49d;
+    --box-dark: #98744d;
+
+    width: 170px;
+    height: 130px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(-20deg) rotateY(-35deg);
+    transition: background .3s;
+}
+
+.box-face {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(80, 60, 35, .2);
+    backface-visibility: visible;
+}
+
+.box-front {
+    width: 170px;
+    height: 130px;
+    background: var(--box-color);
+    transform: translateZ(65px);
+    color: #fff8e9;
+}
+
+.box-back {
+    width: 170px;
+    height: 130px;
+    background: var(--box-color);
+    transform: rotateY(180deg) translateZ(65px);
+    color: #fff8e9;
+    font-size: 11px;
+    letter-spacing: .1em;
+}
+
+.box-right {
+    width: 130px;
+    height: 130px;
+    background: var(--box-color);
+    transform: rotateY(90deg) translateZ(105px);
+}
+
+.box-left {
+    width: 130px;
+    height: 130px;
+    background: var(--box-color);
+    transform: rotateY(-90deg) translateZ(65px);
+}
+
+.box-top {
+    width: 170px;
+    height: 130px;
+    background: var(--box-color);
+    transform: rotateX(90deg) translateZ(65px);
+}
+
+.box-bottom {
+    width: 170px;
+    height: 130px;
+    background: var(--box-color);
+    transform: rotateX(-90deg) translateZ(65px);
+}
+
+.brand-text {
+    font-family: Georgia, serif;
+    letter-spacing: .15em;
+    font-size: 17px;
+}
+
+.brand-image {
+    display: none;
+    width: auto !important;
+    height: auto !important;
+    max-width: 75%;
+    max-height: 65%;
+    object-fit: contain;
+    position: absolute;
+}
+
+.box-3d.has-logo .brand-image {
+    display: block;
+}
+
+.box-3d.has-logo .brand-text {
+    display: none;
+}
+
+
+/* 客製外觀效果 */
+
+.box-3d.finish-sleeve .box-front::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 35px;
+    background: rgba(255, 248, 233, .65);
+    border-top: 1px solid rgba(80, 60, 35, .2);
+    border-bottom: 1px solid rgba(80, 60, 35, .2);
+}
+
+.box-3d.finish-print .box-front {
+    box-shadow: inset 0 0 0 5px rgba(255,255,255,.15);
+}
+
+
+/* =========================
+   右側設定
+========================= */
+
+.preview-settings {
+    padding: 35px;
+    background: white;
+    border-left: 1px solid var(--line);
+}
+
+.preview-settings .config {
+    border: 0;
+    padding: 0;
+}
+
+.settings-note {
+    border-top: 1px solid var(--line);
+    margin-top: 25px;
+    padding-top: 15px;
+}
+
+.settings-note p {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+.stage-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.stage-actions button {
+    background: white;
+    color: var(--green);
+    border: 1px solid var(--green);
+    padding: 9px 13px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.stage-actions button.view-active {
+    background: var(--green);
+    color: white;
+}
+
+
+/* =========================
+   手機版
+========================= */
+
+@media(max-width:800px) {
+
+    .preview-header {
+        height: 62px;
+        padding: 0 15px;
+    }
+
+    .preview-header button {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .preview-status {
+        font-size: 10px;
+    }
+
+    .preview-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .preview-stage {
+        min-height: 390px;
+        padding: 35px 10px 20px;
+    }
+
+    .scene {
+        transform: scale(.85);
+    }
+
+    .drag-hint {
+        margin-top: 35px;
+        font-size: 11px;
+    }
+
+    .preview-settings {
+        padding: 25px 20px;
+        border-left: 0;
+    }
+
+    .stage-label {
+        top: 15px;
+        left: 18px;
+    }
+}
   </style>
  </head>
  <body>
@@ -614,7 +972,7 @@ img {
    給小型點心作坊的包裝提案｜讓每一次寄送，都成為一份禮物
   </div>
   <header class="nav">
-  <!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱-->
+  <!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱-->
    <a class="brand" href="#home">
     不知道叫啥就先這樣
     <small>
@@ -669,7 +1027,7 @@ img {
     </div>
     <!--底下是主視覺--><!--底下是主視覺--><!--底下是主視覺--><!--底下是主視覺--><!--底下是主視覺--><!--底下是主視覺-->
     <div class="hero-art">
-		<p>啊我沒有主視覺</p>
+    	<p>啊我沒有主視覺</p>
     </div>
     <!--上方是主視覺--><!--上方是主視覺--><!--上方是主視覺--><!--上方是主視覺--><!--上方是主視覺--><!--上方是主視覺-->
    </section>
@@ -855,8 +1213,8 @@ img {
        </select>
       </div>
       <div class="field">
-       <label for="qty">
-        預計訂購數量
+       <label for="quantity">
+       預計訂購數量
        </label>
        <input
     	type="number"
@@ -883,19 +1241,15 @@ img {
       <!-- 品牌圖片上傳 -->
 	   <div class="field">
     	<label for="logoUpload">上傳品牌圖片</label>
-        <input
-        	type="file"
-        	id="logoUpload"
-        	accept="image/*"
-        >
-
-       <small class="upload-hint">
+        <input type="file" id="logoUpload" accept="image/*">
+        <small class="upload-hint">
         	可上傳 JPG、PNG 等圖片，圖片將自動顯示於包裝預覽。
        </small>
 	   </div>
+       <!--底下可留可不留--><!--底下可留可不留--><!--底下可留可不留--><!--底下可留可不留--><!--底下可留可不留--><!--底下可留可不留--><!--底下可留可不留--><!--底下可留可不留--><!--底下可留可不留-->
       <div class="field">
        <label for="finish">
-        說不定可以再加一個
+        說不定可以再加一個，沒有就刪掉
        </label>
        <select id="finish">
         <option>
@@ -909,31 +1263,14 @@ img {
         </option>
        </select>
       </div>
-      <div class="preview">
-       <div class="preview-box" id="previewBox">
-
-    	<span id="previewBrandText">你的品牌</span>
-
-    	<img
-        	id="uploadedLogo"
-       		class="preview-logo"
-        	alt="品牌圖片預覽"
-        	hidden
-    	>
-
-		</div>
-       <div class="preview-hint" id="previewHint">
-        物流寄送狀態預覽
-       </div>
-      </div>
-      <div class="toggleline">
-       <span>
-        切換查看送禮狀態
-       </span>
-       <button id="flipBtn" type="button">
-        翻轉包裝 &orarr;
-       </button>
-      </div>
+      <!--以上可留可不留--><!--以上可留可不留--><!--以上可留可不留--><!--以上可留可不留--><!--以上可留可不留--><!--以上可留可不留--><!--以上可留可不留-->
+      <div class="preview-launch">
+   		<button class="primary" id="openPreviewBtn" type="button">
+        	<span>預覽我的包裝</span>
+        	<span>↗</span>
+    	</button>
+    	<p>點擊後進入3D包裝預覽，可旋轉查看不同角度。</p>
+	</div>
       <div class="estimate">
        <div>
         目前選擇
@@ -953,6 +1290,63 @@ img {
      </div>
     </div>
    </section>
+   <!-- 3D 包裝預覽畫面 -->
+	<div class="preview-page" id="previewPage">
+		<div class="preview-header">
+        	<button id="closePreviewBtn" type="button">
+            	← 返回網站
+        	</button>
+        <div class="preview-title">
+        	<!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱-->
+            <strong>就說沒有名字囉</strong>
+            <span>3D PACKAGING PREVIEW</span>
+        </div>
+        <span class="preview-status">即時預覽</span>
+    </div>
+    	<div class="preview-layout">
+        <!-- 左側 3D 預覽 -->
+        	<div class="preview-stage">
+            	<div class="stage-label">
+                	PACKAGING PREVIEW
+            	</div>
+            	<div class="scene">
+                	<div class="box-3d" id="box3D">
+                    	<div class="box-face box-front">
+                        	<span class="brand-text">等下會有圖片囉</span>
+                        	<img class="brand-image" id="brandImage3D" alt="品牌圖片">
+                    	</div>
+                    	<div class="box-face box-back"></div>
+                    	<div class="box-face box-right"></div>
+                    	<div class="box-face box-left"></div>
+                    	<div class="box-face box-top"></div>
+                    	<div class="box-face box-bottom"></div>
+                	</div>
+            	</div>
+            	<p class="drag-hint">
+                	拖曳滑鼠或手指，可以旋轉查看包裝
+            	</p>
+            	<div class="stage-actions">
+                	<button id="shippingViewBtn" class="view-active">
+                    	物流狀態
+                	</button>
+                	<button id="giftViewBtn">
+                    	型態轉換(還沒做呢)
+                	</button>
+                	<button id="resetViewBtn">
+                    	重設角度
+                	</button>
+            	</div>
+        	</div>
+        <!-- 右側設定 -->
+        	<div class="preview-settings" id="previewSettings">
+            	<div id="settingsPlaceholder"></div>
+            	<div class="settings-note">
+                	<strong>包裝設定</strong>
+                	<p>調整右側選項，左側 3D 包裝會即時更新。</p>
+            	</div>
+        	</div>
+    	</div>
+	</div>
    <section class="section how">
     <div class="section-head">
      <div class="eyebrow">
@@ -1065,7 +1459,7 @@ img {
   </main>
   <footer class="footer">
    <div>
-   <!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱-->
+   <!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱--><!--下面這個是我們網站的名稱-->
     <div class="brand">
      所以我們要叫甚麼
     </div>
@@ -1093,62 +1487,315 @@ img {
   <div class="toast" id="toast" role="status">
   </div>
   <script>
-   const size=document.getElementById('size');
-   qty=document.getElementById('quantity');
-   finish=document.getElementById('finish');
-   preview=document.getElementById('previewBox');
-   selection=document.getElementById('selectionText');
-   toast=document.getElementById('toast');
-   const logoInput = document.getElementById('logoUpload');
-   const uploadedLogo = document.getElementById('uploadedLogo');
-   const previewBrandText = document.getElementById('previewBrandText');
-   let flipped = false;
-   logoInput.addEventListener('change', function () {
+const size = document.getElementById('size');
+const qty = document.getElementById('quantity');
+const finish = document.getElementById('finish');
+const selection = document.getElementById('selectionText');
+const toast = document.getElementById('toast');
 
-    const file = this.files[0];
+const config = document.querySelector('.config');
+const previewPage = document.getElementById('previewPage');
+const previewSettings = document.getElementById('previewSettings');
+const settingsPlaceholder = document.getElementById('settingsPlaceholder');
 
-    // 沒有選擇圖片就結束
-    if (!file) return;
+const box3D = document.getElementById('box3D');
+const brandImage3D = document.getElementById('brandImage3D');
 
-    // 確認是否為圖片檔案
-    if (!file.type.startsWith('image/')) {
-        showToast('請選擇圖片檔案');
-        this.value = '';
+let currentcolor = '#CDA779';
+let rotateX = -20;
+let rotateY = -35;
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+let giftMode = false;
+
+let uploadedImageURL = null;
+
+
+/* 開啟 3D 預覽 */
+
+document.getElementById('openPreviewBtn').addEventListener('click', () => {
+
+    previewPage.classList.add('open');
+
+    // 把原本的設定區移到右側
+    settingsPlaceholder.appendChild(config);
+
+    updatePreview();
+
+    window.scrollTo(0, 0);
+
+});
+
+
+/* 關閉預覽 */
+
+document.getElementById('closePreviewBtn').addEventListener('click', () => {
+
+    previewPage.classList.remove('open');
+
+    // 把設定區放回原本位置
+    document.querySelector('.customizer').appendChild(config);
+
+});
+
+
+/* 更新預覽內容 */
+
+function updatePreview() {
+
+    const color = currentColor;
+
+    box3D.style.setProperty('--box-color', color);
+
+    // 根據顏色調整側面明暗
+    box3D.style.setProperty(
+        '--box-light',
+        color === '#71836a' ? '#94a58b' :
+        color === '#d58e68' ? '#e7b292' :
+        color === '#d9c9ae' ? '#eee2d0' :
+        '#dfc49d'
+    );
+
+    box3D.style.setProperty(
+        '--box-dark',
+        color === '#71836a' ? '#56684f' :
+        color === '#d58e68' ? '#b97655' :
+        color === '#d9c9ae' ? '#aa9b83' :
+        '#98744d'
+    );
+
+    // 更新外觀客製方式
+    box3D.classList.remove(
+        'finish-sleeve',
+        'finish-print'
+    );
+
+    if (finish.value === '客製紙套') {
+        box3D.classList.add('finish-sleeve');
+    }
+
+    if (finish.value === '外箱印刷') {
+        box3D.classList.add('finish-print');
+    }
+
+    // 更新尺寸比例
+    if (size.value.includes('小型')) {
+        box3D.style.scale = '0.85';
+    } else if (size.value.includes('大型')) {
+        box3D.style.scale = '1.15';
+    } else {
+        box3D.style.scale = '1';
+    }
+
+    // 更新選擇摘要
+    selection.textContent =
+        size.value.split('｜')[0] +
+        '・' +
+        qty.value +
+        ' 個・' +
+        finish.value;
+
+    // 更新旋轉
+    updateRotation();
+
+}
+
+
+/* 旋轉模型 */
+
+function updateRotation() {
+
+    const extraRotation = giftMode ? 180 : 0;
+
+    box3D.style.transform =
+        `rotateX(${rotateX}deg) rotateY(${rotateY + extraRotation}deg)`;
+
+}
+
+
+/* 顏色選擇 */
+
+document.querySelectorAll('.swatch').forEach(button => {
+
+    button.addEventListener('click', () => {
+
+        document.querySelectorAll('.swatch').forEach(item => {
+            item.classList.remove('active');
+        });
+
+        button.classList.add('active');
+
+        currentColor = button.dataset.color;
+
+        updatePreview();
+
+    });
+
+});
+
+
+/* 監聽尺寸、數量、外觀 */
+
+size.addEventListener('change', updatePreview);
+qty.addEventListener('input', updatePreview);
+finish.addEventListener('change', updatePreview);
+
+
+/* 上傳品牌圖片 */
+
+const logoInput = document.getElementById('logoUpload');
+
+if (logoInput) {
+
+    logoInput.addEventListener('change', () => {
+
+        const file = logoInput.files[0];
+
+        if (!file) return;
+
+        if (!file.type.startsWith('image/')) {
+            showToast('請選擇圖片檔案');
+            logoInput.value = '';
+            return;
+        }
+
+        if (uploadedImageURL) {
+            URL.revokeObjectURL(uploadedImageURL);
+        }
+
+        uploadedImageURL = URL.createObjectURL(file);
+
+        brandImage3D.src = uploadedImageURL;
+
+        box3D.classList.add('has-logo');
+
+    });
+
+}
+
+
+/* 物流狀態 */
+
+document.getElementById('shippingViewBtn').addEventListener('click', () => {
+
+    giftMode = false;
+
+    document.getElementById('shippingViewBtn').classList.add('view-active');
+    document.getElementById('giftViewBtn').classList.remove('view-active');
+
+    updateRotation();
+
+});
+
+/* 重設角度 */
+
+document.getElementById('resetViewBtn').addEventListener('click', () => {
+
+    rotateX = -20;
+    rotateY = -35;
+
+    updateRotation();
+
+});
+
+
+/* 滑鼠與觸控拖曳 */
+
+const scene = document.querySelector('.scene');
+
+scene.addEventListener('pointerdown', event => {
+
+    event.preventDefault();
+
+    if (event.button !== 0 && event.pointerType === 'mouse') return;
+
+    isDragging = true;
+
+    startX = event.clientX;
+    startY = event.clientY;
+
+    scene.setPointerCapture(event.pointerId);
+
+});
+
+scene.addEventListener('pointermove', event => {
+
+    if (!isDragging) return;
+
+    const moveX = event.clientX - startX;
+    const moveY = event.clientY - startY;
+
+    rotateY += moveX * 0.7;
+    rotateX -= moveY * 0.5;
+
+    rotateX = Math.max(-80, Math.min(80, rotateX));
+
+    startX = event.clientX;
+    startY = event.clientY;
+
+    updateRotation();
+
+});
+
+scene.addEventListener('pointerup', () => {
+    isDragging = false;
+});
+
+scene.addEventListener('pointercancel', () => {
+    isDragging = false;
+});
+
+
+/* 整理客製需求 */
+
+document.getElementById('quoteBtn').addEventListener('click', () => {
+
+    const quantity = Number(qty.value);
+
+    if (!Number.isInteger(quantity) || quantity < 1) {
+        showToast('請輸入正確的訂購數量');
+        qty.focus();
         return;
     }
-	const imageURL = URL.createObjectURL(file);
-	uploadedLogo.src = imageURL;
-    uploadedLogo.hidden = false;
-	previewBrandText.hidden = true;
 
-	});
-function update() {
-    selection.textContent=size.value.split('｜')[0]+'・'+qty.value+' 個・'+finish.value
-}
-size.addEventListener('change',update);
-qty.addEventListener('change',update);
-finish.addEventListener('change',update);
-document.querySelectorAll('.swatch').forEach(btn=>btn.addEventListener('click',()=> {
-    document.querySelectorAll('.swatch').forEach(x=>x.classList.remove('active'));btn.classList.add('active');preview.style.background=btn.dataset.color;preview.style.boxShadow='12px 13px 0 '+btn.dataset.color;preview.style.filter='saturate(.85)'
-}
-));
-document.getElementById('flipBtn').addEventListener('click',()=> {
-    flipped=!flipped;preview.classList.toggle('flipped',flipped);document.getElementById('previewHint').textContent=flipped?'送禮組裝狀態預覽':'物流寄送狀態預覽';document.getElementById('flipBtn').textContent=flipped?'切回物流狀態 ↻':'翻轉包裝 ↻'
-}
-);
-document.getElementById('quoteBtn').addEventListener('click',()=> {
-    const message=`客製需求：${size.value}；數量：${qty.value} 個；外觀：${finish.value}。這是禮盒的需求摘要。`;if(navigator.clipboard&&navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(message).then(()=>showToast('需求摘要已複製，可以貼到你的企劃或詢價訊息中。')).catch(()=>showToast(message))
+    const message =
+        `客製需求：${size.value}；` +
+        `數量：${quantity} 個；` +
+        `顏色：${currentColor}；` +
+        `外觀：${finish.value}。`;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+
+        navigator.clipboard.writeText(message)
+            .then(() => showToast('客製需求已複製！'))
+            .catch(() => showToast(message));
+
+    } else {
+
+        showToast(message);
+
     }
-    else showToast(message)
-}
-);
-function showToast(msg) {
-    toast.textContent=msg;
+
+});
+
+
+/* 提示訊息 */
+
+function showToast(message) {
+
+    toast.textContent = message;
+
     toast.classList.add('show');
-    setTimeout(()=>toast.classList.remove('show'),3200)
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+
 }
-update();
+
+
+updatePreview();
   </script>
  </body>
 </html>
